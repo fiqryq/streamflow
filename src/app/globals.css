@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #0055FF;
+  --secondary: #0043CA;
+}
+
+body {
+  @apply bg-dark-900 text-white font-inter;
+}
+
+.sidebar-icon {
+  @apply flex flex-col items-center justify-center w-full py-4 text-gray-400 hover:bg-dark-700/50 hover:text-white transition-all relative group cursor-pointer;
+}
+
+.sidebar-tooltip {
+  @apply absolute left-24 bg-dark-700 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 pointer-events-none transition-all duration-200 scale-0 shadow-lg z-50;
+}
+
+.bottom-nav-item {
+  @apply flex flex-col items-center justify-center flex-1 text-center p-2 text-gray-400 hover:text-gray-100 transition-colors relative;
+}
+
+.bottom-nav-item i {
+  @apply text-[22px] mb-1;
+}
+
+.bottom-nav-item span {
+  @apply text-[11px];
+}
+
+.bottom-nav-active {
+  @apply text-primary;
+}
+
+.bottom-nav-active::before {
+  content: '';
+  @apply absolute top-0 left-1/2 -translate-x-1/2 w-6 h-[3px] bg-primary rounded-b;
+}
+
+.text-logout {
+  color: #FF5555;
+}
+
+.text-logout:hover {
+  color: #FF7777;
+}
