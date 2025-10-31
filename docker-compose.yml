@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 services:
   app:
     build: .
@@ -14,5 +14,16 @@ services:
       - ./public/uploads:/app/public/uploads
     environment:
       - NODE_ENV=production
-    # Uncomment jika ingin mengatur timezone container
-    # - TZ=Asia/Jakarta 
+      - TZ=Asia/Jakarta
+    networks:
+      - dokploy-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.streamflow-app.rule=Host(`streamflow.hashira.studio`)"
+      - "traefik.http.routers.streamflow-app.entrypoints=websecure"
+      - "traefik.http.routers.streamflow-app.tls.certResolver=letsencrypt"
+      - "traefik.http.services.streamflow-app.loadbalancer.server.port=7575"
+
+networks:
+  dokploy-network:
+    external: true
